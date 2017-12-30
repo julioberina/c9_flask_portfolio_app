@@ -64,7 +64,7 @@ def time_post():
     # print(type(request.form['text']))
 
     if request.method == 'GET':
-      return render_template('time.html')
+        return render_template('time.html')
     elif request.method == 'POST':
           print(request.form['text'].split())
           
