@@ -68,7 +68,8 @@ def number_guess_post():
 	if request.method == 'GET':
 		return render_template('number_guess.html')
 	elif request.method == 'POST':
-		print(int(request.form['text']))
+		print("guess: {}".format(int(request.form['text'])))
+		print("number: {}".format(number))
 		consensus = ''
 
 		try:
@@ -76,8 +77,8 @@ def number_guess_post():
 			if guess < number: consensus = 'Guess higher!'
 			elif guess > number: consensus = 'Guess lower!'
 			else:
-				consensus = 'You got it! I have a new number now...'
 				number = random.randrange(1, 101)
+				consensus = 'You got it! I have a new number now...'
 		except ValueError:
 			return "Easy now! Let's keep it simple! Numbers only or don't leave blank!"
 
