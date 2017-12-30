@@ -62,7 +62,7 @@ def shopping_list_post():
             return "Easy now! Let's keep it simple! Just words with a space between them"
 
 
-@app.route('/number_guess', methods=['GET','POST', 'PUT'])
+@app.route('/number_guess', methods=['GET','POST'])
 def number_guess_post():
 	global number
 	if request.method == 'GET':
