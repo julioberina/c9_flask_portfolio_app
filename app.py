@@ -7,7 +7,6 @@ import random
 
 # for Number Guess game
 number = random.randrange(1, 101)
-prev_number = 0
 app = Flask(__name__)
 
 
@@ -66,7 +65,6 @@ def shopping_list_post():
 @app.route('/number_guess', methods=['GET','POST'])
 def number_guess_post():
 	global number
-	global prev_number
 
 	if request.method == 'GET':
 		return render_template('number_guess.html')
@@ -80,11 +78,8 @@ def number_guess_post():
 			if guess < number: consensus = 'Guess higher!'
 			elif guess > number: consensus = 'Guess lower!'
 			else:
-				prev_number = number
 				number = random.randrange(1, 101)
 				consensus = 'You got it! I have a new number now...'
-			while number == prev_number:
-				number = random.randrange(1, 101)
 
 			return render_template('number_guess.html', result=consensus)
 		except ValueError:
